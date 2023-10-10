@@ -1,0 +1,63 @@
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
+
+<div id="app">
+    <p>
+        <router-link to="/user/dfs">Go to user</router-link><br/>
+        <router-link to="/user/fds/profile">Go to user</router-link><br/>
+        <router-link to="/user/fds/posts">Go to user</router-link><br/>
+        <!-- <router-link to="/user1">Go to user2</router-link> -->
+    </p>
+    <router-view></router-view>
+</div>
+
+<script>
+
+const User = {
+  template: `
+    <div class="user">
+      <h2>User {{ $route.params.id }}</h2>
+      <router-view></router-view>
+    </div>
+  `
+}
+const UserComponent = {
+    template: "<div>router---profile</div>"
+}
+const UserPosts = {
+    template: "<div>router---userPosts</div>"
+}
+const all = {
+    template: "<h3>router---all</h3>"
+}
+// const routes = [
+//     {path: "/user/:id", component: User}
+// ]
+const router = new VueRouter({
+    routes: [
+        {
+            path: "/user/:id",
+            component: User,
+            children: [
+                {
+                    path: "profile",
+                    component: UserComponent
+                },
+                {
+                    path: "posts",
+                    component: UserPosts
+                },
+                {
+                    path: "",
+                    component: all
+                }
+            ]
+        }
+    ]
+})
+const app = new Vue({
+    router
+}).$mount("#app")
+
+
+</script>

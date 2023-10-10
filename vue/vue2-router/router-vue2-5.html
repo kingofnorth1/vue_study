@@ -1,0 +1,40 @@
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
+
+<div id="app">
+  <h1>Hello App!</h1>
+  <p>
+    <router-link to="/user/sfds">Go to foo</router-link>
+    <!-- <router-link to="/bar/dqk">Go to bar</router-link> -->
+    <!-- <router-link :to="{name: 'user', params:{userId: 123}}">go to user</router-link> -->
+  </p>
+  <router-view class="view one"></router-view>
+  <router-view class="view two" name="a"></router-view>
+  <router-view class="view three" name="b"></router-view>
+</div>
+
+
+<script>
+const Foo = { template: '<div>Foo</div>' }
+const Bar = { template: '<div>Bar</div>' }
+const Baz = { template: '<div>Baz</div>' }
+// const Bar = { template: '<div>bar {{ this.$route.push("home") }}</div>' }
+
+const router = new VueRouter({
+    routes:[
+        {
+            path: '/',
+            components: {
+                default: Foo,
+                a: Bar,
+                b: Baz
+            }
+        },
+    ]
+})
+
+const app = new Vue({
+    router
+}).$mount('#app')
+
+</script>
