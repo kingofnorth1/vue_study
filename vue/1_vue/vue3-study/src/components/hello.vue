@@ -1,6 +1,14 @@
-<script setup>
+<script>
 import { ref } from 'vue'
-const count = ref(0)
+// const count = ref(0)  
+export default {
+    setup() {
+        const count = ref(0)
+        return {
+            count
+        }
+    }
+}
 </script>
 
 <template>
