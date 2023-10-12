@@ -7,6 +7,7 @@
   import von from './components/v-on.vue'
   import vmodel from './components/v-model.vue'
   import watch from './components/watch.vue'
+  import parent from './components/parent.vue'
 </script>
 <template>
   <hello />
@@ -17,4 +18,5 @@
   <von />
   <vmodel />
   <watch />
+  <parent ></parent>
 </template>
