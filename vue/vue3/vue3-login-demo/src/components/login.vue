@@ -1,18 +1,63 @@
-<script setup>
-import { VueElement } from 'vue';
+<script>
+import { VueElement, onMounted, reactive,ref } from 'vue';
 import {Setting} from '@element-plus/icons-vue'
+import request from '../axios/request'
+
+export default {
+  setup(){
+    const imgSrc = ref()
+    const resourceList = reactive()
+    const form = reactive({
+      userName: "",
+      password: "",
+      code: ""
+    })
+    onMounted(() => {
+      
+    })
+    let getImg = function(){
+      imgSrc.value = `http://101.33.211.100:10012/ly/getCaptchaImage?userName=${form.userName}`;
+      console.log(imgSrc.value)
+    }
+    let userLogin = function() {
+        request({
+            url: '/proxy/login',
+            data: {
+              userName: `${form.userName}`,
+              password: `${form.password}`,
+              code: `${form.code}`
+            },
+            method: 'post'
+        }).then((res) => {
+          resourceList = res.data;
+          console.log(resourceList);
+        })
+    }
+    return {
+      imgSrc,
+      form,
+      resourceList,
+      getImg,
+      userLogin
+    }
+  }
+}
+
 </script>
 
 <template>
   <div id="login">
+    <!-- <h3>test{{ form.userName }}</h3> -->
     <h3 id="accound">账号:</h3>
-    <input id="inaccound"/>
+    <input id="inaccound" v-model="form.userName"/>
     <h3 id="password">密码:</h3>
-    <input id="inpassword"/>
-    <input id="incode"/>
-    <img id="code" src="../assets/images/ggbh.png"/>
-    <button id="sure">确定</button>
-    <button id="cancel">取消</button>
+    <input id="inpassword" v-model="form.password"/>
+    <input id="incode" v-model="form.code"/>
+    <!-- <img id="code" src="../assets/images/ggbh.png"/> -->
+    <!-- <button id="codeImg" @click="getImg"></button> -->
+    <img id="code" :src="imgSrc" @click="getImg"/>
+    <button id="sure" @click="userLogin">确定</button>
+    <button id="cancel" >取消</button>
   </div>
 </template>
 
@@ -44,6 +89,11 @@ import {Setting} from '@element-plus/icons-vue'
   height: 20px;
 }
 #code {
+  margin-top: 20px;
+  height: 30px;
+  width: 100px;
+}
+#codeImg {
   margin-top: 20px;
   height: 30px;
   width: 100px;

@@ -1,29 +1,13 @@
 <script setup>
 import login from './login.vue'
 import { ref } from 'vue'
-const message = ref()
-import API from '../axios/axiosInstance'
-
-const getData = function() {
-    API({
-        url: '/v3/ip',
-        params: {
-            ip: '114.247.50.2',
-            sig: '',
-            key: 'c88981a804344b65ab4884c73ec7547d'
-        },
-        method: 'get'
-    }).then((res) => {
-        alert("请求成功");
-        message.value = res.data;
-    })
-}
+// const message = ref()
 </script>
 
 <template>
     <div id="main">
-        <button @click="getData()">test axios 请求数据</button>
-        <h3>请求到的数据：{{ message }}</h3>
+        <!-- <button @click="getData()">test axios 请求数据</button>
+        <h3>请求到的数据：{{ message }}</h3> -->
         <login></login>
     </div>
 </template>
