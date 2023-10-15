@@ -10,6 +10,10 @@ export default defineConfig({
   ],
   // 本地运行配置，及反向代理配置
   server: {
+    host: "0.0.0.0",
+    cors: true,
+    port: 5173,
+    open: false, //自动打开
     // host: 'junlin', // 指定服务器主机名
     // port: 10012, // 指定服务器端口
     // open: true, // 在服务器启动时自动在浏览器中打开应用程序
@@ -20,7 +24,7 @@ export default defineConfig({
       // 字符串简写写法 
       // '/foo': 'http://101.33.211.100:10012', 
       // 选项写法
-      '^/porxy': {
+      '/porxy': {
           target: 'http://101.33.211.100:10012', //代理接口
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/proxy/, '')
