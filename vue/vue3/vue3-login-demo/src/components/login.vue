@@ -2,6 +2,7 @@
 import { VueElement, onMounted, reactive,ref } from 'vue';
 import {Setting} from '@element-plus/icons-vue'
 import request from '../axios/request'
+// import axios from 'axios'
 
 export default {
   setup(){
