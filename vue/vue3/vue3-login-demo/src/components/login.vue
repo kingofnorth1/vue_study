@@ -16,7 +16,7 @@ export default {
       
     })
     let getImg = function(){
-      imgSrc.value = `http://101.33.211.100:10012/ly/getCaptchaImage?userName=${form.userName}`;
+      imgSrc.value = `http://101.33.211.100:10012/proxy/getCaptchaImage?userName=${form.userName}`;
       console.log(imgSrc.value)
     }
     let userLogin = function() {
