@@ -22,8 +22,8 @@ export default {
       console.log(imgSrc.value)
     }
     let userLogin = function() {
-        request({
-            url: '/login',
+        axios({
+            url: '/proxy/login',
             data: {
               userName: `${form.userName}`,
               password: `${form.password}`,
