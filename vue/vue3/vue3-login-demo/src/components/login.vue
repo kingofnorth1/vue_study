@@ -2,6 +2,7 @@
 import { VueElement, onMounted, reactive,ref } from 'vue';
 import {Setting} from '@element-plus/icons-vue'
 import request from '../axios/request'
+import axios from 'axios'
 // import axios from 'axios'
 
 export default {
@@ -22,7 +23,7 @@ export default {
     }
     let userLogin = function() {
         request({
-            url: '/proxy/login',
+            url: '/login',
             data: {
               userName: `${form.userName}`,
               password: `${form.password}`,
@@ -34,12 +35,22 @@ export default {
           console.log(resourceList);
         })
     }
+    let tiaozhuan = function(){
+      axios({
+        method: 'get',
+        url: 'https://www.baidu.com',
+      }).then(function (response) {
+        res = response.data;
+        console.log(res);
+      });
+    }
     return {
       imgSrc,
       form,
       resourceList,
       getImg,
-      userLogin
+      userLogin,
+      tiaozhuan
     }
   }
 }
@@ -59,6 +70,7 @@ export default {
     <img id="code" :src="imgSrc" @click="getImg"/>
     <button id="sure" @click="userLogin">确定</button>
     <button id="cancel" >取消</button>
+    <button id="baidu" @click="tiaozhuan">跳转</button>
   </div>
 </template>
 
