@@ -22,12 +22,11 @@ export default {
       console.log(imgSrc.value)
     }
     let userLogin = function() {
-        axios({
-            url: '/proxy/login',
+        request({
+            url: '/car/login',
             data: {
               userName: `${form.userName}`,
               password: `${form.password}`,
-              code: `${form.code}`
             },
             method: 'post'
         }).then((res) => {
@@ -54,8 +53,9 @@ export default {
     }
   }
 }
-
+fetch('/api/car/login')
 </script>
+
 
 <template>
   <div id="login">
