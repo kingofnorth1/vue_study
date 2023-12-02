@@ -1,4 +1,9 @@
-var md5 = require("md5");
+var md5 = require("md5")
+var jsdom = require("jsdom")
+const { JSDOM } = jsdom;
+
+const dom = new JSDOM('', {url:"https://www.xiaohongshu.com"})
+
 n = "TestJs"
 console.log(n >> 6 | 192)
 str = String.fromCharCode(n >> 6 | 192)
