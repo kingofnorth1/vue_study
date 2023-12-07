@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "jsdom": "^23.0.1",
-    "md5": "^2.3.0"
+    "md5": "^2.3.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }
